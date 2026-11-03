@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Vạn Tiên Môn - Tu Tiên Chi Lộ</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#07111f;color:#fff;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;min-height:100vh}
+.app{max-width:520px;margin:auto;min-height:100vh;position:relative;overflow:hidden;background:
+radial-gradient(circle at 50% 35%,rgba(89,168,255,.28),transparent 32%),
+linear-gradient(180deg,#102b52 0%,#07111f 55%,#090714 100%)}
+.stars{position:absolute;inset:0;background-image:radial-gradient(#fff 1px,transparent 1px);background-size:47px 47px;opacity:.13;pointer-events:none}
+.top{padding:12px 12px 6px;position:relative;z-index:2}
+.live{display:flex;gap:8px;align-items:center}.pill{padding:7px 11px;border-radius:16px;background:#ef3340;font-weight:800;font-size:12px}.views{padding:7px 11px;border-radius:16px;background:#17253a;font-size:12px}
+.title{text-align:center;margin:7px 0 0;font-family:Georgia,serif;font-weight:900;font-size:34px;color:#ffd96a;text-shadow:0 2px 0 #6a3900,0 0 18px #ffb52e}
+.sub{text-align:center;color:#f8e5b4;font-size:14px;font-weight:700}
+.card{margin:9px 12px;padding:11px;border:1px solid #b88937;border-radius:14px;background:linear-gradient(135deg,rgba(13,31,57,.95),rgba(22,13,35,.94));box-shadow:0 0 18px rgba(255,190,70,.12)}
+.row{display:flex;justify-content:space-between;align-items:center;gap:10px}.leader{font-weight:800}.small{font-size:12px;color:#b9c7dc}.power{color:#65dfff;font-weight:900}
+.realm{text-align:center;color:#ffd66b;font-weight:800;margin-top:4px}
+.scene{height:265px;margin:8px 12px;position:relative;border-radius:18px;overflow:hidden;border:1px solid #b88937;background:
+radial-gradient(circle at 50% 62%,#fff5c9 0 3%,#ffc94d 4%,transparent 15%),
+linear-gradient(150deg,transparent 35%,rgba(84,168,255,.2)),linear-gradient(180deg,#4b86c6,#15284a 50%,#070b16);
+box-shadow:inset 0 -60px 80px #050813,0 0 25px rgba(67,155,255,.2)}
+.mountain{position:absolute;bottom:0;width:0;height:0;border-left:110px solid transparent;border-right:110px solid transparent;border-bottom:170px solid #172b47;filter:drop-shadow(0 0 12px #76bfff)}
+.m1{left:-35px}.m2{left:120px;border-bottom-color:#203b5c;transform:scale(1.2)}.m3{right:-50px}
+.temple{position:absolute;left:50%;bottom:43px;transform:translateX(-50%);width:145px;height:82px;background:#bd8c3d;border:3px solid #ffd96a;border-radius:7px 7px 20px 20px;box-shadow:0 0 25px #ffc44b}
+.temple:before,.temple:after{content:"";position:absolute;left:-28px;right:-28px;height:22px;background:#302036;border:2px solid #ffd96a;transform:skewX(-28deg);top:-13px}.temple:after{top:-35px;left:5px;right:5px}
+.avatar{position:absolute;left:50%;bottom:10px;transform:translateX(-50%);font-size:52px;filter:drop-shadow(0 0 12px #7ee8ff)}
+.controls{display:grid;grid-template-columns:1fr 1.35fr 1fr;gap:8px;padding:0 12px}
+button{border:0;color:#fff;font-weight:900;border-radius:14px;padding:13px 7px;background:linear-gradient(145deg,#273d6c,#111a32);border:1px solid #6c86b8;font-size:13px}
+button:active{transform:scale(.97)}.cultivate{background:radial-gradient(circle,#fff2a6 0,#ffbe32 42%,#8d4500 100%);color:#241300;border:2px solid #ffe49a;font-family:Georgia,serif;font-size:20px;box-shadow:0 0 25px #ffbd35}
+.progress{height:10px;background:#172033;border-radius:10px;overflow:hidden;border:1px solid #60728f;margin-top:8px}.bar{height:100%;width:7%;background:linear-gradient(90deg,#63d9ff,#ffd45c);transition:.25s}
+.section{margin:10px 12px}.section h3{margin:0 0 7px;color:#ffd66b;font-family:Georgia,serif}
+.list{display:flex;flex-direction:column;gap:6px}.item{display:flex;justify-content:space-between;padding:9px 10px;border-radius:10px;background:rgba(20,31,52,.85);border:1px solid #344968;font-size:13px}.rank{color:#ffd45c;font-weight:900}
+.log{max-height:110px;overflow:auto;font-size:12px;color:#cbd6e6}.log div{padding:4px 0;border-bottom:1px solid rgba(255,255,255,.06)}
+.bottom{position:sticky;bottom:0;background:rgba(5,9,18,.95);backdrop-filter:blur(12px);display:grid;grid-template-columns:repeat(4,1fr);padding:8px;border-top:1px solid #344968}.bottom button{padding:8px 4px;background:transparent;border:0;font-size:11px;color:#b8c7da}
+.toast{position:fixed;left:50%;bottom:82px;transform:translate(-50%,20px);opacity:0;background:#171c2c;border:1px solid #ffd66b;color:#fff1bd;padding:10px 15px;border-radius:20px;transition:.25s;z-index:20}.toast.show{opacity:1;transform:translate(-50%,0)}
+</style>
+</head>
+<body>
+<div class="app">
+<div class="stars"></div>
+<div class="top">
+  <div class="live"><span class="pill">● LIVE</span><span class="views">👁 1.2K</span><span class="views">⚔️ Vạn Tiên Môn</span></div>
+  <div class="title">Vạn Tiên Môn</div>
+  <div class="sub">TU TIÊN CHI LỘ · Đồng tâm tu luyện · Cùng nhau đột phá</div>
+</div>
+
+<div class="card">
+  <div class="row"><div><div class="leader">👑 Chưởng môn Nguyễn Thanh Sơn</div><div class="small">Cảnh giới: Đại Thừa</div></div><div class="power">⚡ <span id="total">568888</span></div></div>
+</div>
+
+<div class="scene">
+  <div class="mountain m1"></div><div class="mountain m2"></div><div class="mountain m3"></div>
+  <div class="temple"></div><div class="avatar">🧙‍♂️</div>
+</div>
+
+<div class="controls">
+  <button onclick="breakthrough()">⚡ ĐỘT PHÁ</button>
+  <button class="cultivate" onclick="cultivate()">Tu Luyện<br><small>+10 Linh Lực</small></button>
+  <button onclick="join()">⚔️ NHẬP MÔN</button>
+</div>
+
+<div class="card">
+  <div class="row"><span>Cảnh giới hiện tại</span><b id="realm">Luyện Khí · Tầng 1</b></div>
+  <div class="row small"><span>Linh lực</span><span><b id="power">100</b> / <span id="need">1000</span></span></div>
+  <div class="progress"><div class="bar" id="bar"></div></div>
+</div>
+
+<div class="section">
+<h3>🏆 Bảng Xếp Hạng</h3>
+<div class="list" id="ranking">
+<div class="item"><span><span class="rank">🥇 1</span> Tiên Tôn</span><b>2.888.888</b></div>
+<div class="item"><span><span class="rank">🥈 2</span> ThanhKiếm</span><b>1.999.999</b></div>
+<div class="item"><span><span class="rank">🥉 3</span> TiểuLongNữ</span><b>1.688.888</b></div>
+</div>
+</div>
+
+<div class="section">
+<h3>💬 Tiên Môn Thông Báo</h3>
+<div class="card log" id="log"><div>Hệ thống: Chào mừng các đạo hữu đến Vạn Tiên Môn.</div></div>
+</div>
+
+<div class="section">
+<h3>🌌 Tổng Linh Lực Môn Phái</h3>
+<div class="card"><div class="row"><span>Bí cảnh khai mở</span><b id="guild">12.888.888</b></div><div class="progress"><div class="bar" id="guildbar" style="width:64%"></div></div></div>
+</div>
+
+<div class="bottom">
+<button onclick="join()">👤<br>Đệ Tử</button>
+<button onclick="toast('Thành tựu đang được tu luyện...')">🏆<br>Thành Tựu</button>
+<button onclick="toast('Bí cảnh sẽ mở khi đủ linh lực!')">📜<br>Sự Kiện</button>
+<button onclick="toast('Chợ Tiên Tôn: sắp mở')">💎<br>Tiên Thương</button>
+</div>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+let power=100, total=568888, guild=12888888;
+const realms=[
+["Luyện Khí · Tầng 1",1000],["Trúc Cơ · Tầng 1",5000],["Kim Đan · Tầng 1",20000],
+["Nguyên Anh · Tầng 1",80000],["Hóa Thần · Tầng 1",300000],["Đại Thừa · Tầng 1",1000000],["Độ Kiếp · Tầng 1",3000000]
+];
+let ri=0;
+function cultivate(){power+=10;total+=10;guild+=10;render();addlog("Bạn vừa hấp thu thiên địa linh khí: +10 linh lực.");}
+function breakthrough(){
+ if(power>=realms[ri][1]){if(ri<realms.length-1){ri++;power=0;addlog("⚡ Thiên kiếp giáng lâm! Đột phá thành công: "+realms[ri][0]+"!");toast("Đột phá thành công! ⚡");}else toast("Bạn đã đạt Độ Kiếp!");}
+ else toast("Chưa đủ linh lực để đột phá.");
+ render();
+}
+function join(){addlog("⚔️ Một đạo hữu đã nhập môn Vạn Tiên Môn.");toast("Nhập môn thành công!");}
+function render(){
+ document.getElementById("power").textContent=power.toLocaleString("vi-VN");
+ document.getElementById("need").textContent=realms[ri][1].toLocaleString("vi-VN");
+ document.getElementById("realm").textContent=realms[ri][0];
+ document.getElementById("total").textContent=total.toLocaleString("vi-VN");
+ document.getElementById("guild").textContent=guild.toLocaleString("vi-VN");
+ document.getElementById("bar").style.width=Math.min(100,power/realms[ri][1]*100)+"%";
+ document.getElementById("guildbar").style.width=Math.min(100,guild/20000000*100)+"%";
+ localStorage.setItem("vanTienMon",JSON.stringify({power,total,guild,ri}));
+}
+function addlog(t){const l=document.getElementById("log");const d=document.createElement("div");d.textContent=t;l.prepend(d);while(l.children.length>8)l.removeChild(l.lastChild);}
+function toast(t){const x=document.getElementById("toast");x.textContent=t;x.classList.add("show");setTimeout(()=>x.classList.remove("show"),1600)}
+try{const s=JSON.parse(localStorage.getItem("vanTienMon"));if(s){power=s.power||100;total=s.total||568888;guild=s.guild||12888888;ri=s.ri||0}}catch(e){}
+render();
+</script>
+</body>
+</html>
